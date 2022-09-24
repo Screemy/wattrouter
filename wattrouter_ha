@@ -1,0 +1,82 @@
+# Pridani wattrouteru do Home Assistantu do sensoru
+#
+#
+#
+# 1) Nainstalovat doplnek MultiScrape pomoci HACS
+# 2) Do configuration.yaml doplnit kod
+
+multiscrape:
+  resource: http://IP_WATTROUTERU/meas.xml
+  scan_interval: 1
+  sensor:
+    - unique_id: wattrouter_date
+      name: "Datum"
+      select: "meas > DaR"
+      unit_of_measurement: ""
+    - unique_id: wattrouter_time
+      name: "Čas"
+      select: "meas > TiR"
+      unit_of_measurement: ""
+    - unique_id: wattrouter_1_power
+      name: "Výkon/Odběr L1"
+      select: "meas > I1 > P"
+      device_class: power
+      unit_of_measurement: "kW"
+    - unique_id: wattrouter_2_power
+      name: "Výkon/Odběr L2"
+      select: "meas > I2 > P"
+      device_class: power
+      unit_of_measurement: "kW"
+    - unique_id: wattrouter_3_power
+      name: "Výkon/Odběr L3"
+      select: "meas > I3 > P"
+      device_class: power
+      unit_of_measurement: "kW"
+    - unique_id: wattrouter_ssr_1_state
+      name: "Plán 1"
+      select: "meas > O1 > HN"
+      unit_of_measurement: ""
+    - unique_id: wattrouter_ssr_1_power
+      name: "Výkon zátěže na výstupu SSR 1 v kW"
+      select: "meas > O1 > P"
+      device_class: power
+      unit_of_measurement: "kW"
+    - unique_id: wattrouter_ssr_1_energy
+      name: "Dodaná energie na výstupu SSR 1 v kWh"
+      select: "meas > O1 > E"
+      device_class: energy
+      unit_of_measurement: "kWh"
+    - unique_id: wattrouter_ssr_2_state
+      name: "Plán 2"
+      select: "meas > O2 > HN"
+      unit_of_measurement: ""
+    - unique_id: wattrouter_ssr_2_power
+      name: "Výkon zátěže na výstupu SSR 2 v kW"
+      select: "meas > O2 > P"
+      device_class: power
+      unit_of_measurement: "kW"
+    - unique_id: wattrouter_ssr_2_energy
+      name: "Dodaná energie na výstupu SSR 2 v kWh"
+      select: "meas > O2 > E"
+      device_class: energy
+      unit_of_measurement: "kWh"
+    - unique_id: wattrouter_ssr_3_state
+      name: "Plán 3"
+      select: "meas > O3 > HN"
+      unit_of_measurement: ""
+    - unique_id: wattrouter_ssr_3_power
+      name: "Výkon zátěže na výstupu SSR 3 v kW"
+      select: "meas > O3 > P"
+      device_class: power
+      unit_of_measurement: "kW"
+    - unique_id: wattrouter_ssr_3_energy
+      name: "Dodaná energie na výstupu SSR 3 v kWh"
+      select: "meas > O3 > E"
+      device_class: energy
+      unit_of_measurement: "kWh"
+    - unique_id: wattrouter_dq1
+      name: "Teplota DQ1"
+      select: "meas > DQ1"
+      device_class: temperature
+      unit_of_measurement: "°C"
+
